@@ -18,4 +18,7 @@
 
 + (RoundsController *)sharedInstance;
 
+// add a public, void method, roundSelected
+-(void)roundSelected;
+
 @end

@@ -19,6 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self registerForNotifications];
 
 }
 
@@ -32,13 +34,47 @@
 -(void)updateTimerLabel {
     
     // call startTimer on sharedInstace of Timer.
-    [Timer sharedInstance];
+    NSInteger minutes = [Timer sharedInstance].minutes;
+    NSInteger seconds = [Timer sharedInstance].seconds;
+    
+    self.timerLabel.text = [self timerStringWithMinutes:minutes andSeconds:seconds];
+}
+
+
+// I DON'T UNDERSTAND THIS METHOD AT ALL
+-(NSString *)timerStringWithMinutes:(NSInteger)minutes andSeconds:(NSInteger)seconds {
+    
+    NSString *timerString;
+    
+    if (minutes >=10)
+    {
+        timerString = [NSString stringWithFormat:@"0%li:", (long)minutes];
+    }
+    else {
+        timerString = [NSString stringWithFormat:@"0%li:", (long)minutes];
+    }
+    if (seconds >= 10) {
+        timerString = [timerString stringByAppendingString:[NSString stringWithFormat:@"%li", (long)seconds]];
+    }
+    else {
+        timerString = [timerString stringByAppendingString:[NSString stringWithFormat:@"%li", (long)seconds]];
+    }
+    
+    return timerString;
 }
 
 // Subscribe your TimerViewController to run the update label method on the SecondTickNotification.
 -(void)registerForNotifications {
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTimerLabel) name:secondTickNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newRound) name:newRoundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newRound) name:roundCompleteNotification object:nil];
+}
+
+-(void)newRound {
+    
+    [self updateTimerLabel];
+    self.timerButton.enabled = YES;
 }
 
 
@@ -51,6 +87,7 @@
 
 -(void) dealloc {
     
+    // Don't forget to register in the init and unregister in the dealloc
     [self unregisterForNotifications];
 }
 
