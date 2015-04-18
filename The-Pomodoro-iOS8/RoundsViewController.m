@@ -9,6 +9,7 @@
 #import "RoundsViewController.h"
 #import "RoundsController.h"
 #import "Timer.h"
+#import "AppearanceController.h"
 
 @interface RoundsViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -24,6 +25,8 @@
     // Do any additional setup after loading the view.
     
     [self registerForNotifications];
+    
+    [AppearanceController initializeAppearanceDefaults];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,6 +47,10 @@
     
     cell.textLabel.text = [NSString stringWithFormat:@"%li minutes", (long)[minutes integerValue]];
     
+    
+    // set the image of the imageView of the cell to a UIImage with file named
+    cell.imageView.image = [UIImage imageNamed:[AppearanceController imageNames][indexPath.row]];
+    
     return cell;
 }
 
@@ -56,7 +63,7 @@
 
 #pragma mark - TableView Delegate Methods
 
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 //    set the currentRound property of ```[RoundsViewController sharedInstance] to the indexPath.row
     [RoundsController sharedInstance].currentRound = indexPath.row;

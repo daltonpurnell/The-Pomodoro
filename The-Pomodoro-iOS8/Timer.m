@@ -7,10 +7,13 @@
 //
 
 #import "Timer.h"
+#import<UIKit/UIKit.h>
+
 
 @interface Timer()
 
 @property (assign, nonatomic) BOOL isOn;
+@property (nonatomic, strong) NSDate *expirationDate;
 
 @end
 
@@ -38,6 +41,24 @@
 -(void)startTimer {
     
     self.isOn = YES;
+    
+// In the startTimer method, set expirationDate to the date (time) when the timer will expire
+    // I DON'T UNERSTAND HOW WE SET THIS PART
+    NSTimeInterval timerLength = self.minutes * 60 + self.seconds;
+    self.expirationDate = [NSDate dateWithTimeIntervalSinceNow:timerLength];
+    
+    
+    UILocalNotification *timerExpiredNotification = [UILocalNotification new];
+    
+    // set properties for notification
+    timerExpiredNotification.fireDate = self.expirationDate;
+    timerExpiredNotification.timeZone = [NSTimeZone defaultTimeZone];
+    timerExpiredNotification.soundName = UILocalNotificationDefaultSoundName;
+    timerExpiredNotification.alertBody = @"Round complete. Go to next round?";
+    
+    // Schedule notification
+    [[UIApplication sharedApplication] scheduleLocalNotification:timerExpiredNotification];
+    
     [self checkActive];
 }
 
@@ -47,7 +68,6 @@
     
     // send a RoundCompleteNotification that the timer has finished
     [[NSNotificationCenter defaultCenter] postNotificationName:roundCompleteNotification object:nil];
-    
 
 }
 
@@ -93,8 +113,28 @@
 -(void)cancelTimer {
     
     self.isOn = NO;
+    
+    // Cancel all local notifications
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    
     // cancel previous perform requests
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
+}
+
+
+-(void)prepareForBackground {
+    
+    [[NSUserDefaults standardUserDefaults] setObject:self.expirationDate forKey:expirationDate];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
+-(void)loadFromBackground {
+    
+    self.expirationDate = [[NSUserDefaults standardUserDefaults] objectForKey:expirationDate];
+    NSTimeInterval seconds = [self.expirationDate timeIntervalSinceNow];
+    self.minutes = seconds / 60;
+    self.seconds = seconds - (self.minutes * 60);
 }
 
 

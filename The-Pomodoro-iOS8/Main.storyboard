@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="W9A-OI-BpV">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Rounds View Controller-->
@@ -13,19 +14,20 @@
                         <viewControllerLayoutGuide type="bottom" id="M9V-ld-3O9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Xnq-D8-psW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="La6-U9-1q8">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.91453598479999998" green="0.91453598479999998" blue="0.91453598479999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="UwT-0j-CUj">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="DOQ-CF-hVv">
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UwT-0j-CUj" id="MSg-kr-0FJ">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DOQ-CF-hVv" id="VDM-Qw-cRV">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.97346558988941778" green="1" blue="0.96965449383132707" alpha="0.57000000000000006" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -40,9 +42,8 @@
                     <navigationItem key="navigationItem" id="edo-ho-bhZ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XW9-hd-46U" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="U7D-mF-Xc6" customClass="RoundsDataSource"/>
             </objects>
-            <point key="canvasLocation" x="1499" y="661"/>
+            <point key="canvasLocation" x="1498" y="677"/>
         </scene>
         <!--Timer-->
         <scene sceneID="bim-OV-Jas">
@@ -56,27 +57,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLr-0r-Ygv">
-                                <rect key="frame" x="279" y="151" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blurry background green.png" translatesAutoresizingMaskIntoConstraints="NO" id="8sv-jj-zAk">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLr-0r-Ygv">
+                                <rect key="frame" x="16" y="157" width="568" height="197"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="100"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DmP-2u-urZ">
-                                <rect key="frame" x="256" y="238" width="88" height="30"/>
-                                <color key="backgroundColor" red="0.91453598479999998" green="0.91453598479999998" blue="0.91453598479999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DmP-2u-urZ">
+                                <rect key="frame" x="257" y="291" width="87" height="87"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="87" id="KWt-Dj-iOD"/>
+                                    <constraint firstAttribute="width" constant="87" id="iz0-2H-Up7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                 <state key="normal" title="Start">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="timerButtonTapped:" destination="eKQ-ZE-Ng6" eventType="touchUpInside" id="QKF-Rd-1Go"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="white circle.png" translatesAutoresizingMaskIntoConstraints="NO" id="vu6-6S-8J7">
+                                <rect key="frame" x="16" y="28" width="568" height="515"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ghR-Vv-LtG" firstAttribute="top" secondItem="DmP-2u-urZ" secondAttribute="bottom" constant="173" id="5zm-xD-4IZ"/>
+                            <constraint firstItem="ghR-Vv-LtG" firstAttribute="top" secondItem="vu6-6S-8J7" secondAttribute="bottom" constant="8" id="Ctj-Gw-ch6"/>
+                            <constraint firstItem="8sv-jj-zAk" firstAttribute="leading" secondItem="zVK-lQ-sZZ" secondAttribute="leading" id="OhU-ul-hN2"/>
+                            <constraint firstAttribute="bottom" secondItem="8sv-jj-zAk" secondAttribute="bottom" id="On4-qJ-DII"/>
+                            <constraint firstItem="JLr-0r-Ygv" firstAttribute="centerX" secondItem="DmP-2u-urZ" secondAttribute="centerX" id="XWU-yL-vLm"/>
+                            <constraint firstItem="JLr-0r-Ygv" firstAttribute="top" secondItem="Oab-Lo-8d9" secondAttribute="bottom" constant="137" id="ZWV-bo-QgY"/>
+                            <constraint firstItem="vu6-6S-8J7" firstAttribute="top" secondItem="Oab-Lo-8d9" secondAttribute="bottom" constant="8" symbolic="YES" id="a09-Uy-oHP"/>
+                            <constraint firstItem="DmP-2u-urZ" firstAttribute="top" secondItem="JLr-0r-Ygv" secondAttribute="bottom" constant="-63" id="chB-OD-mQc"/>
+                            <constraint firstItem="8sv-jj-zAk" firstAttribute="centerX" secondItem="JLr-0r-Ygv" secondAttribute="centerX" id="dBA-nt-efO"/>
+                            <constraint firstItem="vu6-6S-8J7" firstAttribute="leading" secondItem="zVK-lQ-sZZ" secondAttribute="leadingMargin" id="exM-hV-vSu"/>
+                            <constraint firstItem="JLr-0r-Ygv" firstAttribute="leading" secondItem="zVK-lQ-sZZ" secondAttribute="leadingMargin" id="lPD-cd-BLp"/>
+                            <constraint firstItem="8sv-jj-zAk" firstAttribute="top" secondItem="zVK-lQ-sZZ" secondAttribute="top" id="nW6-5S-Xz5"/>
+                            <constraint firstItem="vu6-6S-8J7" firstAttribute="centerX" secondItem="DmP-2u-urZ" secondAttribute="centerX" id="qwB-n8-m6y"/>
+                            <constraint firstAttribute="trailing" secondItem="8sv-jj-zAk" secondAttribute="trailing" id="uhz-OC-Iw6"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Timer" image="Timer Filled-50.png" id="BLv-AV-RnF"/>
+                    <tabBarItem key="tabBarItem" title="Timer" image="Timer Filled-32.png" id="BLv-AV-RnF"/>
                     <connections>
                         <outlet property="timerButton" destination="DmP-2u-urZ" id="DRw-h1-4U8"/>
                         <outlet property="timerLabel" destination="JLr-0r-Ygv" id="NcO-tp-bWo"/>
@@ -109,7 +136,7 @@
         <scene sceneID="T2R-Wa-4uB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gd7-pk-GTd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Rounds" image="Todo List-50.png" id="230-8U-JWj"/>
+                    <tabBarItem key="tabBarItem" title="Rounds" image="Todo List-32.png" id="230-8U-JWj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wJc-74-AG8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -126,7 +153,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Timer Filled-50.png" width="50" height="50"/>
-        <image name="Todo List-50.png" width="50" height="50"/>
+        <image name="Timer Filled-32.png" width="32" height="32"/>
+        <image name="Todo List-32.png" width="32" height="32"/>
+        <image name="blurry background green.png" width="800" height="450"/>
+        <image name="white circle.png" width="512" height="512"/>
     </resources>
 </document>

@@ -27,6 +27,7 @@
 // This method will trigger the timer
 - (IBAction)timerButtonTapped:(id)sender {
     
+    self.timerButton.enabled = NO;
     [[Timer sharedInstance]startTimer];    
     
 }
@@ -41,6 +42,7 @@
 }
 
 
+
 // I DON'T UNDERSTAND THIS METHOD AT ALL
 -(NSString *)timerStringWithMinutes:(NSInteger)minutes andSeconds:(NSInteger)seconds {
     
@@ -48,7 +50,7 @@
     
     if (minutes >=10)
     {
-        timerString = [NSString stringWithFormat:@"0%li:", (long)minutes];
+        timerString = [NSString stringWithFormat:@"%li:", (long)minutes];
     }
     else {
         timerString = [NSString stringWithFormat:@"0%li:", (long)minutes];
@@ -57,7 +59,7 @@
         timerString = [timerString stringByAppendingString:[NSString stringWithFormat:@"%li", (long)seconds]];
     }
     else {
-        timerString = [timerString stringByAppendingString:[NSString stringWithFormat:@"%li", (long)seconds]];
+        timerString = [timerString stringByAppendingString:[NSString stringWithFormat:@"0%li", (long)seconds]];
     }
     
     return timerString;

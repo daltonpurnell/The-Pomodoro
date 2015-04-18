@@ -14,6 +14,8 @@ static NSString *const roundCompleteNotification = @"Round complete notification
 
 static NSString *const newRoundNotification = @"New round notification";
 
+static NSString *expirationDate = @"expiration Date";
+
 @interface Timer : NSObject
 
 @property (nonatomic, assign) NSInteger minutes;
@@ -24,5 +26,10 @@ static NSString *const newRoundNotification = @"New round notification";
 -(void)cancelTimer;
 
 + (Timer *)sharedInstance;
+
+-(void)prepareForBackground;
+
+-(void)loadFromBackground;
+
 
 @end
